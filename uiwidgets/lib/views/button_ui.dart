@@ -52,7 +52,7 @@ class _ButtonUiState extends State<ButtonUi>
   bool isPressed = false;
   late AnimationController _controller;
   late Animation<double> _shake;
-  late AudioPlayer _player ;
+  late AudioPlayer _player;
 
   @override
   void initState() {
@@ -208,12 +208,8 @@ class _ButtonUiState extends State<ButtonUi>
               },
               onTap: () {
                 setState(() {
-                  _player.play(
-                  AssetSource('sounds/door.mp3'),
-                  volume: 1.0,
-                );
+                  _player.play(AssetSource('sounds/door.mp3'), volume: 1.0);
                 });
-                
               },
               child: AnimatedBuilder(
                 animation: _shake,
