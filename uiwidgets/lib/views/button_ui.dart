@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 class ButtonUi extends StatefulWidget {
@@ -9,7 +10,8 @@ class ButtonUi extends StatefulWidget {
   State<ButtonUi> createState() => _ButtonUiState();
 }
 
-class _ButtonUiState extends State<ButtonUi> {
+class _ButtonUiState extends State<ButtonUi>
+    with SingleTickerProviderStateMixin {
   String selecteAction = 'BackUp';
   String message = 'Sheriff';
   String dailySpecial = 'Tap the button to see today\'s specials 🍽️';
@@ -46,7 +48,31 @@ class _ButtonUiState extends State<ButtonUi> {
       }
     });
   }
+
   bool isPressed = false;
+  late AnimationController _controller;
+  late Animation<double> _shake;
+  late AudioPlayer _player ;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _player = AudioPlayer();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+
+    _shake = Tween<double>(begin: 0, end: 1).animate(_controller);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _player.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -128,20 +154,19 @@ class _ButtonUiState extends State<ButtonUi> {
                 decoration: BoxDecoration(border: Border.all(width: 4)),
               ),
             ),
-            ElevatedButton.icon(
+            ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: WidgetStateProperty.resolveWith<Color>((
                   states,
                 ) {
                   if (states.contains(WidgetState.pressed)) {
-                    return Colors.yellow; // 👈 pressed
+                    return Colors.yellow;
                   }
-                  return Colors.red; // 👈 normal
+                  return Colors.blue;
                 }),
               ),
-              icon: Icon(Icons.shield, color: Colors.purple),
               onPressed: () {},
-              label: Text('Vigilante', style: TextStyle(color: Colors.white)),
+              child: Text('Vigilante', style: TextStyle(color: Colors.white)),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8, bottom: 8),
@@ -171,6 +196,9 @@ class _ButtonUiState extends State<ButtonUi> {
               onTapDown: (details) {
                 setState(() {
                   isPressed = true;
+                  _controller.forward(from: 0).then((_) {
+                    _controller.reverse();
+                  });
                 });
               },
               onTapUp: (details) {
@@ -178,14 +206,34 @@ class _ButtonUiState extends State<ButtonUi> {
                   isPressed = false;
                 });
               },
-              child: Container(
-                height: 200,
-                width: 200,
-                decoration: BoxDecoration(
-                  border: Border.all(),
-                  image: DecorationImage(
-                    image: isPressed ? AssetImage("assets/images/openBankBunker.jpeg") : AssetImage("assets/images/closeBankBunker.jpeg"),
-                    fit: BoxFit.fitHeight,
+              onTap: () {
+                setState(() {
+                  _player.play(
+                  AssetSource('sounds/door.mp3'),
+                  volume: 1.0,
+                );
+                });
+                
+              },
+              child: AnimatedBuilder(
+                animation: _shake,
+                builder: (context, child) {
+                  return Transform.translate(
+                    offset: Offset(sin(_shake.value * pi * 3) * 10, 0),
+                    child: child,
+                  );
+                },
+                child: Container(
+                  height: 200,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                    image: DecorationImage(
+                      image: isPressed
+                          ? AssetImage("assets/images/openBankBunker.jpeg")
+                          : AssetImage("assets/images/closeBankBunker.jpeg"),
+                      fit: BoxFit.fitHeight,
+                    ),
                   ),
                 ),
               ),
