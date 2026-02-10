@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class TextFieldsUi extends StatefulWidget {
   const TextFieldsUi({super.key});
@@ -118,7 +117,6 @@ class _TextFieldsUiState extends State<TextFieldsUi> {
                 ),
               ),
             ),
-            SizedBox(height: 2),
           ],
         ),
       ),

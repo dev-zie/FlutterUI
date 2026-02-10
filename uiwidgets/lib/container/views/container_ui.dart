@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:uiwidgets/data/entity/photos.dart';
-import 'package:uiwidgets/views/photo_detail.dart';
+import 'package:uiwidgets/container/data/entity/photos.dart';
+import 'package:uiwidgets/container/views/photo_detail.dart';
 
 class ContainerUI extends StatelessWidget {
   const ContainerUI({super.key});
