@@ -32,7 +32,7 @@ class _SegmentedColorState extends State<SegmentedColor> {
       case 1:
         return Colors.pink;
       case 2:
-        return Colors.cyan;
+        return Colors.cyanAccent;
       default:
         return Colors.black;
     }
