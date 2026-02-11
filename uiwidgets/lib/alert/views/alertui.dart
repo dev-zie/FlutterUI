@@ -161,7 +161,7 @@ class _AlertuiState extends State<Alertui> {
                             });
                             Navigator.pop(context);
                           },
-                          child: Text("Option 2"),
+                          child: Text("Option 2"), 
                         ),
                       ],
                       cancelButton: CupertinoActionSheetAction(
