@@ -33,10 +33,30 @@ class TabbarUi extends StatelessWidget {
         ),
         body: const TabBarView(
           children: <Widget>[
-            Center(child: Text("Hi" , style: TextStyle(color: Colors.white, fontSize: 120),)),
-            Center(child: Text("I", style: TextStyle(color: Colors.white, fontSize: 120),)),
-            Center(child: Text("Am", style: TextStyle(color: Colors.white, fontSize: 120),)),
-            Center(child: Text("HULKK", style: TextStyle(color: Colors.white, fontSize: 120),)),
+            Center(
+              child: Text(
+                "Hi",
+                style: TextStyle(color: Colors.white, fontSize: 120),
+              ),
+            ),
+            Center(
+              child: Text(
+                "I",
+                style: TextStyle(color: Colors.white, fontSize: 120),
+              ),
+            ),
+            Center(
+              child: Text(
+                "Am",
+                style: TextStyle(color: Colors.white, fontSize: 120),
+              ),
+            ),
+            Center(
+              child: Text(
+                "HULKK",
+                style: TextStyle(color: Colors.white, fontSize: 120),
+              ),
+            ),
           ],
         ),
       ),
