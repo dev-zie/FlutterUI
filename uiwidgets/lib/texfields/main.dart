@@ -1,6 +1,0 @@
-import 'package:flutter/material.dart';
-import 'package:uiwidgets/texfields/views/text_fields_ui.dart';
-
-void main(List<String> args) {
-  runApp(MaterialApp(home: TextFieldsUi()));
-}
