@@ -9,7 +9,7 @@ class PlacesItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return ColoredBox(
       color: Color(0xffe80000),
       child: Padding(
         padding: const EdgeInsets.all(12.0),

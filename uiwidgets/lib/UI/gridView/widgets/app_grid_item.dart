@@ -20,7 +20,7 @@ class _AppGridItemState extends State<AppGridItem> {
         CupertinoContextMenuAction(
           onPressed: () {
             Navigator.pop(context);
-            Share.share('sa', subject: 'Sa');
+            SharePlus.instance.share(ShareParams(text: "Sa"));
           },
           isDefaultAction: true,
           trailingIcon: CupertinoIcons.share,

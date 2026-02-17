@@ -32,7 +32,7 @@ class _TheLinearProgressIndicatorUIState
               ),
               child: Image.asset('assets/images/alaaddin.png'),
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             SizedBox(
               width: 200,
               child: LinearProgressIndicator(
@@ -41,7 +41,7 @@ class _TheLinearProgressIndicatorUIState
                 value: indicator,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             IconButton(
               onPressed: () {
                 if (step == 10) {

@@ -1,13 +1,12 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:uiwidgets/UI/container/data/entity/photos.dart';
 
 class PhotoDetail extends StatelessWidget {
-  PhotoDetail({super.key, required this.photo, required this.index});
+  const PhotoDetail({super.key, required this.photo, required this.index, this.iconName});
 
-  Photos photo;
-  int index;
+  final Photos photo;
+  final int index;
+  final String? iconName;
 
   @override
   Widget build(BuildContext context) {

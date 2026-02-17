@@ -6,7 +6,7 @@ class Passenger {
   final String hometown;
   final String mail;
 
-  Passenger({
+ const Passenger({
     required this.name,
     required this.surname,
     required this.team,

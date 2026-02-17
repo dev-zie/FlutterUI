@@ -38,11 +38,12 @@ class _HomePageState extends State<HomePage> {
       ),
       body: RefreshIndicator(
         onRefresh: loadPlaces,
-        child: ListView.builder(
+        child: ListView.separated(
+          padding: EdgeInsets.all(12),
           itemCount: places.length,
           itemBuilder: (context, index) {
             return PlacesItem(place: places[index]);
-          },
+          }, separatorBuilder: (BuildContext context, int index) { return SizedBox(height: 12); },
         ),
       ),
       floatingActionButton: FloatingActionButton(
